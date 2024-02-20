@@ -1,18 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handlee&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
 
 :root {
 
-    --accent-colour: #ffcbc4;
-
+    --accent-colour: #76a198;
     --background-colour: #e2e8f0;
     --background-highlight: #ffffff;
-    --project-highlight: lightblue;
+    --project-highlight: #d9aaa9;
 
-    --nav-icon-colour: #000000;
+    --nav-icon-colour: #ffffff;
     
+    --action-font: #ffffff;
+    --nav-font: #ffffff;
 
-    --main-font: #ffffff;
-    --nav-font: black;
+    --hover: #00000081;
 }
 
 /* General Settings */
@@ -25,9 +26,9 @@
 
 body {
     min-height: 100vh;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     display: grid;
-    grid-template-columns: 20rem 1fr;
+    grid-template-columns: 17rem 1fr;
 }
 
 svg {
@@ -61,7 +62,8 @@ aside {
         display: flex;
         align-items: center;
         padding-left: 1rem;
-        font-size: 2.5rem;
+        font-size: 2.7rem;
+        font-family: 'Handlee', sans-serif;
         position: sticky;
         top: 0;
     }
@@ -84,13 +86,17 @@ nav {
         display: flex;
         align-items: center;
         padding-bottom: 1rem;
-        font-weight: bold;
+        font-weight: 600;
         color: var(--nav-font);
     }
 
     & span {
         padding-left: 1rem;
-        font-size: 1.6rem;
+        font-size: 1.4rem;
+    }
+
+    & a:hover {
+        color: var(--hover);
     }
 
     & svg {
@@ -126,22 +132,45 @@ div > form {
     gap: 1.2rem;
 }
 
+form > label:hover {
+    fill: var(--hover);
+    cursor: pointer;
+}
+
 input[type="search"] {
     background: var(--background-colour);
     border-radius: 1rem;
     border: none;
     outline: none;
+    box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.07);
     height: 2rem;
     flex: 1;
     padding-left: 1rem;
 }
 
+input:hover {
+    box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.02);
+  }
+
+  input:focus {
+    color: #4b515d;
+    border: 1px solid #B8B6B6;
+    box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.01), 0px 0px 8px rgba(0, 0, 0, 0.2);
+  }
+
 div.profile {
+    margin: 0 1rem;
     display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    & svg:hover {
+        fill: var(--hover);
+        cursor: pointer;
+    }
 
     & img {
-        height: 4rem;
-        width: 4rem;
+        height: 3.5rem;
     }
 
 }
@@ -149,10 +178,39 @@ div.profile {
 div.welcome {
     flex: 1;
     display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-width: 24rem;
+    margin-left: 2rem;
 
     & img {
-        height: 4rem;
-        width: 4rem;
+        height: 5rem;
+    }
+
+    & p {
+        font-size: 1rem;
+    }
+}
+
+div.user-actions {
+    display: flex;
+    gap: 2rem;
+    margin-right: 2rem;
+
+    & a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 2.75rem;
+        width: 7.5rem;
+        border-radius: 2rem;
+        background-color: var(--accent-colour);
+        color: var(--action-font);
+        font-weight: 700;
+    }
+
+    & a:hover {
+        background-color: var(--hover);
     }
 }
 
@@ -167,13 +225,13 @@ section {
     z-index: 11;
 
     & h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 }
 
 .project-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
     gap: 2rem;
     padding-top: 1.5rem;
     padding-right: 2rem;
@@ -200,6 +258,10 @@ section {
 
     & svg {
         margin-left: 1.2rem;
+    }
+
+    & svg:hover {
+        fill: var(--hover);
     }
 }
 
@@ -228,8 +290,33 @@ section {
 
 .trending-list {
     background-color: var(--background-highlight);
-    padding: 1rem;
+    padding: 0 1rem;
     border-radius: 1rem;
+}
+
+.trend {
+    display: grid;
+    grid-auto-flow: column;
+    padding: 0.5rem 1rem;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
+
+    & img {
+        height: 4rem;
+    }
+
+    & p {
+        font-size: 0.75rem;
+    }
+}
+
+.trend:first-child {
+    margin-top: 1rem;
+}
+
+.trend:last-child {
+    margin-bottom: 1rem;
 }
 
 /* Footer */
@@ -240,8 +327,18 @@ footer {
     grid-auto-flow: column;
     align-items: center;
     justify-content: center;
+    
      
     & p {
         margin-right: 1rem;
+    }
+
+    & svg {
+        fill: var(--accent-colour);
+        transition: transform 0.4s ease-in-out;
+    }
+
+    & svg:hover {
+        transform: rotate(360deg) scale(1.2);
     }
 }
