@@ -6,17 +6,16 @@
 
     --background-colour: #e2e8f0;
     --background-highlight: #ffffff;
+    --project-highlight: lightblue;
 
     --nav-icon-colour: #000000;
     
 
     --main-font: #ffffff;
     --nav-font: black;
-
-
-
-
 }
+
+/* General Settings */
 
 * {
     margin: 0;
@@ -28,7 +27,7 @@ body {
     min-height: 100vh;
     font-family: 'Roboto', sans-serif;
     display: grid;
-    grid-template-columns: 1.5fr 5fr;
+    grid-template-columns: 20rem 1fr;
 }
 
 svg {
@@ -40,9 +39,13 @@ a {
     text-decoration: none;
 }
 
+/* Navigation */
+
 aside {
     grid-column: 1;
     background-color: var(--accent-colour);
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    z-index: 10;
 
     & a {
         color: var(--nav-font);
@@ -75,7 +78,7 @@ div.nav-two {
 
 nav {
     display: grid;
-    padding-left: 3rem;
+    padding-left: 2rem;
 
     & a {
         display: flex;
@@ -87,7 +90,7 @@ nav {
 
     & span {
         padding-left: 1rem;
-        font-size: 2rem;
+        font-size: 1.6rem;
     }
 
     & svg {
@@ -95,14 +98,16 @@ nav {
     }
 }
 
-
+/* Content */
 
 main {
     grid-column: 2;
     display: grid;
-    grid-template-rows: 10rem 1fr 5rem;
+    grid-template-rows: 11rem 1fr 4.5rem;
     background-color: var(--background-colour);
 }
+
+/* Header */
 
 header {
     background-color: var(--background-highlight);
@@ -118,6 +123,7 @@ div > form {
     flex: 1;
     display: flex;
     padding: 0 2rem 0 2rem;
+    gap: 1.2rem;
 }
 
 input[type="search"] {
@@ -127,6 +133,7 @@ input[type="search"] {
     outline: none;
     height: 2rem;
     flex: 1;
+    padding-left: 1rem;
 }
 
 div.profile {
@@ -149,22 +156,83 @@ div.welcome {
     }
 }
 
+/* Projects */
+
 section {
     display: grid;
-    grid-template-columns: 4fr 1fr;
-    padding: 1rem;
+    grid-template-columns: 1fr 20rem;
+    padding: 2.5rem 2rem;
+    /* box-shadow: inset rgba(60, 70, 85, 0.5) 0px 0px 20px 0px, rgba(0, 0, 0, .3) 0px 20px 60px -24px; */
+    box-shadow: rgb(180, 193, 204) 0 4px 6px 1px inset, rgba(180, 193, 204, 0.63) 0 -4px 6px 1px inset;
+    z-index: 11;
+
+    & h2 {
+        font-size: 2rem;
+    }
 }
 
 .project-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 200px);
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 2rem;
+    padding-top: 1.5rem;
+    padding-right: 2rem;
 }
 
 .project {
     background-color: var(--background-highlight);
-    width: 200px;
+    border-radius: 1rem;
+    padding: 2rem;
+    border-left: var(--project-highlight) 0.6rem solid;
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    align-content: start;
+
+
+    & h3 {
+        font-size: 1.4rem;
+    }
+
+    & div.project-icons {
+        justify-self: end;
+        padding-top: 2rem;
+    }
+
+    & svg {
+        margin-left: 1.2rem;
+    }
 }
+
+/* Announcements and Trending */
+
+.news {
+    display: grid;
+    align-content: start;
+    gap: 1.5rem;
+}
+
+.announcement-list {
+    background-color: var(--background-highlight);
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.announcement {
+    padding: 1rem;
+}
+
+.announcement:nth-of-type(2) {
+    border-top: 2px solid var(--background-colour);
+    border-bottom: 2px solid var(--background-colour);
+}
+
+.trending-list {
+    background-color: var(--background-highlight);
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+/* Footer */
 
 footer {
     background-color: var(--background-highlight);
